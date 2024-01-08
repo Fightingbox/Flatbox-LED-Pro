@@ -16,3 +16,4 @@ flatbox-led is a Low profile hitbox-layout fightstick which improved and extende
 ![Flatbox-LED](assets/flatbox-led.jpg)
 ![Flatbox-LED](assets/flatbox-led-buttons-mapping.jpg)
 
+

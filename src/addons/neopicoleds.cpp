@@ -124,6 +124,10 @@ void NeoPicoLEDAddon::setup()
 	configureLEDs();
 
 	nextRunTime = make_timeout_time_ms(0); // Reset timeout
+
+		const FocusModeOptions &focusModeOptions = Storage::getInstance().getAddonOptions().focusModeOptions;
+	isFocusModeEnabled = focusModeOptions.enabled && focusModeOptions.rgbLockEnabled &&
+						 isValidPin(focusModeOptions.pin);
 }
 
 void NeoPicoLEDAddon::process()
@@ -165,10 +169,34 @@ void NeoPicoLEDAddon::process()
 
 	as.Animate();
 
-	if (turnOffWhenSuspended && get_usb_suspended()) {
-		as.DimBrightnessTo0();
-	} else {
-		as.SetBrightness(AnimationStation::GetBrightness());
+	if (isFocusModeEnabled)
+	{
+		const FocusModeOptions &focusModeOptions = Storage::getInstance().getAddonOptions().focusModeOptions;
+		bool isFocusModeActive = !gpio_get(focusModeOptions.pin);
+		if (focusModePrevState != isFocusModeActive)
+		{
+			focusModePrevState = isFocusModeActive;
+			if (isFocusModeActive)
+			{
+				as.DimBrightnessTo0();
+			}
+			else
+			{
+				as.SetBrightness(AnimationStation::GetBrightness());
+			}
+		}
+	}
+	else
+	{
+
+		if (turnOffWhenSuspended && get_usb_suspended())
+		{
+			as.DimBrightnessTo0();
+		}
+		else
+		{
+			as.SetBrightness(AnimationStation::GetBrightness());
+		}
 	}
 
 	as.ApplyBrightness(frame);
