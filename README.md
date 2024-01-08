@@ -13,6 +13,6 @@ flatbox-led is a Low profile hitbox-layout fightstick which improved and extende
 |SOCD mode| noly choose by the Hotkeys | yes, can can choose by a slider|
 |USB Passthrough| no  | yes |
 
-![Flatbox-LED](assets/flatbox-led.jpg)
-![Flatbox-LED](assets/flatbox-led-buttons-mapping.jpg)
+![Flatbox-LED](configs/Flatbox-LED/assets/flatbox-led.jpg)
+![Flatbox-LED](configs/Flatbox-LED/assets/flatbox-led-buttons-mapping.jpg)
 
