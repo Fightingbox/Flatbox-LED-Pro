@@ -3,12 +3,12 @@
  * SPDX-FileCopyrightText: Copyright (c) 2021 Jason Skuby (mytechtoybox.com)
  */
 
-#ifndef FLATBOX_LED_PRO_CONFIG_H_
-#define FLATBOX_LED_PRO_CONFIG_H_
+#ifndef FLATBOX_LED_ULTRA_CONFIG_H_
+#define FLATBOX_LED_ULTRA_CONFIG_H_
 
 #include "enums.pb.h"
 
-#define BOARD_CONFIG_LABEL "Flatbox-LED"
+#define BOARD_CONFIG_LABEL "Flatbox-LED-Ultra"
 
 // Mapping between Flatbox LED switch number (as silkscreened) and GPIO pin
 								//|* GP2040 | Xinput | Switch  | PS3/4/5 | Dinput | Arcade *|
@@ -91,9 +91,9 @@
 #define PIN_BUTTON_TURBO     -1                     // Turbo
 
 // This is D-PAD mode section 
-#define JSLIDER_ENABLED -1
-#define PIN_SLIDER_ONE        -1                // Left Stick Slider
-#define PIN_SLIDER_TWO        -1                // Right Stick Slider
+#define JSLIDER_ENABLED 1
+#define PIN_SLIDER_ONE        13                // Left Stick Slider
+#define PIN_SLIDER_TWO        12                // Right Stick Slider
 
 // This is the SOCD section.
 // SOCD stands for `simultaneous opposing cardinal directions`.
@@ -102,9 +102,9 @@
 // 2 - `SOCD_MODE_UP_PRIORITY` - This is up priority SOCD.  EG. when you press `up` + `down` `up` will be registered.
 // 3 - `SOCD_MODE_SECOND_INPUT_PRIORITY` - This is last priority SOCD.  EG. when you press and hold `up` then press `down` `down` will be registered.
 // 4 - `SOCD_MODE_FIRST_INPUT_PRIORITY` - This is first priority SOCD.  EG. when you press and hold `up` then press `down` `up` will be registered.
-#define SLIDER_SOCD_ENABLED   -1
-#define PIN_SLIDER_SOCD_ONE   -1                // SOCD Slider Pin One
-#define PIN_SLIDER_SOCD_TWO   -1                // SOCD Slider Pin Two
+#define SLIDER_SOCD_ENABLED 1
+#define PIN_SLIDER_SOCD_ONE   14                // SOCD Slider Pin One
+#define PIN_SLIDER_SOCD_TWO   17                // SOCD Slider Pin Two
 #define DEFAULT_SOCD_MODE SOCD_MODE_NEUTRAL
 // SOCD Slider Slot Defaults
 #define SLIDER_SOCD_SLOT_ONE SOCD_MODE_UP_PRIORITY
@@ -292,15 +292,15 @@
 
 // Button Lock Add-on setting
 // In Focus on mode, the START, SELECT, CAPTURE, and HOME buttons are locked,  the OLED off state, all the LED off state
-#define FOCUS_MODE_ENABLED -1
+#define FOCUS_MODE_ENABLED 1
 #define FOCUS_MODE_BUTTON_MASK GAMEPAD_MASK_S1 | GAMEPAD_MASK_S2 | GAMEPAD_MASK_A1 | GAMEPAD_MASK_A2 | GAMEPAD_MASK_L3 | GAMEPAD_MASK_R3 // 0 means none, get other mask from GamepadState.h
-#define FOCUS_MODE_PIN -1
-#define FOCUS_MODE_OLED_LOCK_ENABLED -1
-#define FOCUS_MODE_RGB_LOCK_ENABLED -1
-#define FOCUS_MODE_BUTTON_LOCK_ENABLED -1
+#define FOCUS_MODE_PIN 8
+#define FOCUS_MODE_OLED_LOCK_ENABLED 1
+#define FOCUS_MODE_RGB_LOCK_ENABLED 1
+#define FOCUS_MODE_BUTTON_LOCK_ENABLED 1
 
 // USB Passthrough settings
-#define PSPASSTHROUGH_ENABLED -1
+#define PSPASSTHROUGH_ENABLED 1
 #define PSPASSTHROUGH_PIN_DPLUS 22
 
 
