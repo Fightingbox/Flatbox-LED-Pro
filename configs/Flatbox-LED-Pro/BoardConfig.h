@@ -10,78 +10,51 @@
 
 #define BOARD_CONFIG_LABEL "Flatbox-LED-Pro"
 
-// Mapping between Flatbox LED switch number (as silkscreened) and GPIO pin
-								//|* GP2040 | Xinput | Switch  | PS3/4/5 | Dinput | Arcade *|
-#define FLATBOX_SW2_PIN    5    //| S1 		| Back   | Minus   | Select  | 9      | Coin    |
-#define FLATBOX_SW3_PIN    4    //| A1 		| Guide  | Home    | PS      | 13     | ~       |
-#define FLATBOX_SW4_PIN    3    //| A2 		|  ~     | Capture | ~       | 14     | ~       |
-#define FLATBOX_SW5_PIN    2    //| L3 		|  LS    | LS      | L3      | 11     | LS      |
-#define FLATBOX_SW1_PIN    6    //| S2 		| Start  | Plus    | Start   | 10     | Start   |
-#define FLATBOX_SW6_PIN    1    //| R3 		|  RS    | RS      | R3      | 12     | RS      |
-#define FLATBOX_SW7_PIN    9    //| LEFT 	| LEFT 	 | LEFT    | LEFT    | LEFT   | LEFT    |
-#define FLATBOX_SW8_PIN    10   //| DOWN    | DOWN   | DOWN    | DOWN    | DOWN	  | DOWN    |
-#define FLATBOX_SW9_PIN    11   //| RIGHT   | RIGHT  | RIGHT   | RIGHT   | RIGHT  | RIGHT   |
-#define FLATBOX_SW10_PIN   18   //| B3 		| X 	 | Y 	   | Square  | 1 	  | P1      |
-#define FLATBOX_SW11_PIN   25   //| B4 		| Y 	 | X       | Triangle| 4      | P2      |
-#define FLATBOX_SW12_PIN   27   //| R1 		| RB     | R 	   | R1      | 6      | P3      |
-#define FLATBOX_SW13_PIN   29   //| L1 		| LB 	 | L 	   | L1      | 5      | P4      |
-#define FLATBOX_SW14_PIN   19   //| B1 		| A 	 | B 	   | Cross   | 2      | K1      |
-#define FLATBOX_SW15_PIN   24   //| B2 		| B 	 | A 	   | Circle  | 3      | K2      |
-#define FLATBOX_SW16_PIN   26   //| R2 		| RT 	 | ZR 	   | R2 	 | 8 	  | K3      |
-#define FLATBOX_SW17_PIN   28   //| L2 		| LT 	 | ZL 	   | L2 	 | 7 	  | K4      |
-#define FLATBOX_SW18_PIN   16   //| UP 		| UP  	 | UP      | UP      | UP     | UP      |
+
+// Main pin mapping Configuration
+// Mapping between Flatbox Rev4 switch number (as silkscreened) and GPIO pin listed under "Flatbox Rev4 SW#"
+//                                                  // Flatbox Rev4 SW# | GP2040 | Xinput | Switch  | PS3/4/5  | Dinput | Arcade |
+#define GPIO_PIN_16 GpioAction::BUTTON_PRESS_UP     // UP     | UP     | UP      | UP       | UP     | UP     |
+#define GPIO_PIN_10 GpioAction::BUTTON_PRESS_DOWN   // DOWN   | DOWN   | DOWN    | DOWN     | DOWN   | DOWN   |
+#define GPIO_PIN_11 GpioAction::BUTTON_PRESS_RIGHT  // RIGHT  | RIGHT  | RIGHT   | RIGHT    | RIGHT  | RIGHT  |
+#define GPIO_PIN_09 GpioAction::BUTTON_PRESS_LEFT   // LEFT   | LEFT   | LEFT    | LEFT     | LEFT   | LEFT   |
+#define GPIO_PIN_19 GpioAction::BUTTON_PRESS_B1     // B1     | A      | B       | Cross    | 2      | K1     |
+#define GPIO_PIN_24 GpioAction::BUTTON_PRESS_B2     // B2     | B      | A       | Circle   | 3      | K2     |
+#define GPIO_PIN_26 GpioAction::BUTTON_PRESS_R2     // R2     | RT     | ZR      | R2       | 8      | K3     |
+#define GPIO_PIN_28 GpioAction::BUTTON_PRESS_L2     // L2     | LT     | ZL      | L2       | 7      | K4     |
+#define GPIO_PIN_18 GpioAction::BUTTON_PRESS_B3     // B3     | X      | Y       | Square   | 1      | P1     |
+#define GPIO_PIN_25 GpioAction::BUTTON_PRESS_B4     // B4     | Y      | X       | Triangle | 4      | P2     |
+#define GPIO_PIN_27 GpioAction::BUTTON_PRESS_R1     // R1     | RB     | R       | R1       | 6      | P3     |
+#define GPIO_PIN_29 GpioAction::BUTTON_PRESS_L1     // L1     | LB     | L       | L1       | 5      | P4     |
+#define GPIO_PIN_05 GpioAction::BUTTON_PRESS_S1     // S1     | Back   | Minus   | Select   | 9      | Coin   |
+#define GPIO_PIN_06 GpioAction::BUTTON_PRESS_S2     // S2     | Start  | Plus    | Start    | 10     | Start  |
+#define GPIO_PIN_02 GpioAction::BUTTON_PRESS_L3     // L3     | LS     | LS      | L3       | 11     | LS     |
+#define GPIO_PIN_01 GpioAction::BUTTON_PRESS_R3     // R3     | RS     | RS      | R3       | 12     | RS     |
+#define GPIO_PIN_04 GpioAction::BUTTON_PRESS_A1     // A1     | Guide  | Home    | PS       | 13     | ~      |
+#define GPIO_PIN_03 GpioAction::BUTTON_PRESS_A2     // A2     | ~      | Capture | ~        | 14     | ~      |
 
 
 // Keyboard Mapping Configuration
-// List of HID keycodes can be located here: https://github.com/hathach/tinyusb/blob/3623ba1884ddff23e9b64766cb6dd032f1425846/src/class/hid/hid.h#L356
-// Even for the modifier keys, HID_KEY entries should be used as the implementation expects those and will convert as necessary.
-                                              //|* GP2040   | Xinput | Switch  | PS3/4/5 | Dinput | Arcade *|
-#define KEY_DPAD_UP     HID_KEY_ARROW_UP      //| UP 	 	| UP  	 | UP      | UP      | UP     | UP      |
-#define KEY_DPAD_DOWN   HID_KEY_ARROW_DOWN    //| DOWN    	| DOWN   | DOWN    | DOWN    | DOWN   | UP      |
-#define KEY_DPAD_RIGHT  HID_KEY_ARROW_RIGHT   //| RIGHT   	| RIGHT  | RIGHT   | RIGHT   | RIGHT  | UP      |
-#define KEY_DPAD_LEFT   HID_KEY_ARROW_LEFT    //| LEFT 	    | LEFT 	 | LEFT    | LEFT    | LEFT   | LEFT    |
-#define KEY_BUTTON_B1   HID_KEY_SHIFT_LEFT    //| B1 		| A 	 | B 	   | Cross   | 2      | K1      |
-#define KEY_BUTTON_B2   HID_KEY_Z             //| B2 		| B 	 | A 	   | Circle  | 3      | K2      |
-#define KEY_BUTTON_R2   HID_KEY_X             //| R2 		| RT 	 | ZR 	   | R2 	 | 8 	  | K3      |
-#define KEY_BUTTON_L2   HID_KEY_V             //| L2 		| LT 	 | ZL 	   | L2 	 | 7 	  | K4      |
-#define KEY_BUTTON_B3   HID_KEY_CONTROL_LEFT  //| B3 		| X 	 | Y 	   | Square  | 1 	  | P1      |
-#define KEY_BUTTON_B4   HID_KEY_ALT_LEFT      //| B4 		| Y 	 | X       | Triangle| 4      | P2      |
-#define KEY_BUTTON_R1   HID_KEY_SPACE         //| R1 		| RB     | R 	   | R1      | 6      | P3      |
-#define KEY_BUTTON_L1   HID_KEY_C             //| L1 		| LB 	 | L 	   | L1      | 5      | P4      |
-#define KEY_BUTTON_S1   HID_KEY_5             //| S1 		| Back   | Minus   | Select  | 9      | C       |
-#define KEY_BUTTON_S2   HID_KEY_1             //| S2 		| Start  | Plus    | Start   | 10     | S       |
-#define KEY_BUTTON_L3   HID_KEY_EQUAL         //| L3 		|  LS    | LS      | L3      | 11     | L       |
-#define KEY_BUTTON_R3   HID_KEY_MINUS         //| R3 		|  RS    | RS      | R3      | 12     | R       |
-#define KEY_BUTTON_A1   HID_KEY_9             //| A1 		| Guide  | Home    | PS      | 13     | ~       |
-#define KEY_BUTTON_A2   HID_KEY_F2            //| A2 		|  ~     | Capture | ~       | 14     | ~       |
-
-// This is the main pin definition section.
-// This will let you specify which GPIO pin each button is assigned too.
-// You can set any of the main pins as `-1` to disable it.
-// The Turbo pin and LS + RS slider pins can also be set to `-1` to disable that functionality.
-// Please note that only when `PIN_BUTTON_TURBO` is set to `-1` will the `T##` be removed from a connected display.
-// Please note that only when `PIN_SLIDER_ONE` and  `PIN_SLIDER_TWO` are set to `-1` will the button combo shortcut for DP/LS/RS work.
-// The buttons are listed in GP2040 configuration, beside each the listed order is *GP2040 / Xinput / Switch / PS3 / Directinput / Arcade*
-
-											   //|* GP2040  | Xinput | Switch  | PS3/4/5 | Dinput | Arcade *|
-#define PIN_DPAD_UP     FLATBOX_SW18_PIN       //| UP 	 	| UP  	 | UP      | UP      | UP     | UP      |
-#define PIN_DPAD_DOWN   FLATBOX_SW8_PIN        //| DOWN    	| DOWN   | DOWN    | DOWN    | DOWN   | DOWN    |
-#define PIN_DPAD_RIGHT  FLATBOX_SW9_PIN        //| RIGHT   	| RIGHT  | RIGHT   | RIGHT   | RIGHT  | RIGHT   |
-#define PIN_DPAD_LEFT   FLATBOX_SW7_PIN        //| LEFT 	| LEFT 	 | LEFT    | LEFT    | LEFT   | LEFT    |
-#define PIN_BUTTON_B1   FLATBOX_SW14_PIN       //| B1 		| A 	 | B 	   | Cross   | 2      | K1      |
-#define PIN_BUTTON_B2   FLATBOX_SW15_PIN       //| B2 		| B 	 | A 	   | Circle  | 3      | K2      |
-#define PIN_BUTTON_R2   FLATBOX_SW16_PIN       //| R2 		| RT 	 | ZR 	   | R2 	 | 8 	  | K3      |
-#define PIN_BUTTON_L2   FLATBOX_SW17_PIN       //| L2 		| LT 	 | ZL 	   | L2 	 | 7 	  | K4      |
-#define PIN_BUTTON_B3   FLATBOX_SW10_PIN       //| B3 		| X 	 | Y 	   | Square  | 1 	  | P1      |
-#define PIN_BUTTON_B4   FLATBOX_SW11_PIN       //| B4 		| Y 	 | X       | Triangle| 4      | P2      |
-#define PIN_BUTTON_R1   FLATBOX_SW12_PIN       //| R1 		| RB     | R 	   | R1      | 6      | P3      |
-#define PIN_BUTTON_L1   FLATBOX_SW13_PIN       //| L1 		| LB 	 | L 	   | L1      | 5      | P4      |
-#define PIN_BUTTON_S1   FLATBOX_SW2_PIN        //| S1 		| Back   | Minus   | Select  | 9      | Coin    |
-#define PIN_BUTTON_S2   FLATBOX_SW1_PIN        //| S2 		| Start  | Plus    | Start   | 10     | Start   |
-#define PIN_BUTTON_L3   FLATBOX_SW5_PIN        //| L3 		|  LS    | LS      | L3      | 11     | LS      |
-#define PIN_BUTTON_R3   FLATBOX_SW6_PIN        //| R3 		|  RS    | RS      | R3      | 12     | RS      |
-#define PIN_BUTTON_A1   FLATBOX_SW3_PIN        //| A1 		| Guide  | Home    | PS      | 13     | ~       |
-#define PIN_BUTTON_A2   FLATBOX_SW4_PIN        //| A2 		|  ~     | Capture | ~       | 14     | ~       |
+//                                            // GP2040 | Xinput | Switch  | PS3/4/5  | Dinput | Arcade |
+#define KEY_DPAD_UP     HID_KEY_ARROW_UP      // UP     | UP     | UP      | UP       | UP     | UP     |
+#define KEY_DPAD_DOWN   HID_KEY_ARROW_DOWN    // DOWN   | DOWN   | DOWN    | DOWN     | DOWN   | DOWN   |
+#define KEY_DPAD_RIGHT  HID_KEY_ARROW_RIGHT   // RIGHT  | RIGHT  | RIGHT   | RIGHT    | RIGHT  | RIGHT  |
+#define KEY_DPAD_LEFT   HID_KEY_ARROW_LEFT    // LEFT   | LEFT   | LEFT    | LEFT     | LEFT   | LEFT   |
+#define KEY_BUTTON_B1   HID_KEY_SHIFT_LEFT    // B1     | A      | B       | Cross    | 2      | K1     |
+#define KEY_BUTTON_B2   HID_KEY_Z             // B2     | B      | A       | Circle   | 3      | K2     |
+#define KEY_BUTTON_R2   HID_KEY_X             // R2     | RT     | ZR      | R2       | 8      | K3     |
+#define KEY_BUTTON_L2   HID_KEY_V             // L2     | LT     | ZL      | L2       | 7      | K4     |
+#define KEY_BUTTON_B3   HID_KEY_CONTROL_LEFT  // B3     | X      | Y       | Square   | 1      | P1     |
+#define KEY_BUTTON_B4   HID_KEY_ALT_LEFT      // B4     | Y      | X       | Triangle | 4      | P2     |
+#define KEY_BUTTON_R1   HID_KEY_SPACE         // R1     | RB     | R       | R1       | 6      | P3     |
+#define KEY_BUTTON_L1   HID_KEY_C             // L1     | LB     | L       | L1       | 5      | P4     |
+#define KEY_BUTTON_S1   HID_KEY_5             // S1     | Back   | Minus   | Select   | 9      | Coin   |
+#define KEY_BUTTON_S2   HID_KEY_1             // S2     | Start  | Plus    | Start    | 10     | Start  |
+#define KEY_BUTTON_L3   HID_KEY_EQUAL         // L3     | LS     | LS      | L3       | 11     | LS     |
+#define KEY_BUTTON_R3   HID_KEY_MINUS         // R3     | RS     | RS      | R3       | 12     | RS     |
+#define KEY_BUTTON_A1   HID_KEY_9             // A1     | Guide  | Home    | PS       | 13     | ~      |
+#define KEY_BUTTON_A2   HID_KEY_F2            // A2     | ~      | Capture | ~        | 14     | ~      |
+#define KEY_BUTTON_FN   -1                    // Hotkey Function                                        |
 
 // This is Hotkey section
 #define PIN_BUTTON_FN        -1                      // Hotkey Function
