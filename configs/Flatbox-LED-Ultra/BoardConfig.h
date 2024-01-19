@@ -151,19 +151,19 @@
 #define LEDS_DPAD_LEFT   1 // 11  
 #define LEDS_DPAD_DOWN   2//10
 #define LEDS_DPAD_RIGHT  3//9
-#define LEDS_DPAD_UP     0
+#define LEDS_DPAD_UP     12
 #define LEDS_BUTTON_B3   4
 #define LEDS_BUTTON_B4   5
 #define LEDS_BUTTON_R1   6
 #define LEDS_BUTTON_L1   7
-#define LEDS_BUTTON_B1   8
-#define LEDS_BUTTON_B2   9
-#define LEDS_BUTTON_R2   10
-#define LEDS_BUTTON_L2   11
+#define LEDS_BUTTON_B1   11
+#define LEDS_BUTTON_B2   10
+#define LEDS_BUTTON_R2   9
+#define LEDS_BUTTON_L2   8
 #define LEDS_BUTTON_S1   -1
 #define LEDS_BUTTON_S2   -1
-#define LEDS_BUTTON_L3   -1
-#define LEDS_BUTTON_R3   -1
+#define LEDS_BUTTON_L3   0
+#define LEDS_BUTTON_R3   13
 #define LEDS_BUTTON_A1   -1
 #define LEDS_BUTTON_A2   -1
 
@@ -303,7 +303,8 @@
 #define PSPASSTHROUGH_ENABLED 1
 #define PSPASSTHROUGH_PIN_DPLUS 22
 
-
+#define PSPASSTHROUGH_ENABLED 1
+#define XBONEPASSTHROUGH_ENABLED 1
 // Keyboard Mapping Configuration
 // List of HID keycodes can be located here: https://github.com/hathach/tinyusb/blob/3623ba1884ddff23e9b64766cb6dd032f1425846/src/class/hid/hid.h#L356
 // Even for the modifier keys, HID_KEY entries should be used as the implementation expects those and will convert as necessary.
