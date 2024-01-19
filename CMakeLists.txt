@@ -18,19 +18,16 @@ execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --always --dirty
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	OUTPUT_VARIABLE GIT_REPO_VERSION
 	OUTPUT_STRIP_TRAILING_WHITESPACE)
-string(REGEX REPLACE "v" "" CMAKE_GIT_REPO_VERSION ${GIT_REPO_VERSION})
-string(REGEX REPLACE "-RC.*" "" CMAKE_GIT_REPO_VERSION ${CMAKE_GIT_REPO_VERSION})
-string(REGEX REPLACE "-g.*" "" CMAKE_GIT_REPO_VERSION ${CMAKE_GIT_REPO_VERSION})
-string(REGEX REPLACE "-dirty.*" "" CMAKE_GIT_REPO_VERSION ${CMAKE_GIT_REPO_VERSION})
-string(REGEX REPLACE "-" "." CMAKE_GIT_REPO_VERSION ${CMAKE_GIT_REPO_VERSION})
-string(REGEX REPLACE "^.......$" "0.0.0" CMAKE_GIT_REPO_VERSION ${CMAKE_GIT_REPO_VERSION}) # fix if all we have is the git SHA
+string(REGEX REPLACE "v([0-9]+\\.[0-9]+\\.[0-9]+).*" "\\1" CMAKE_GIT_REPO_VERSION ${GIT_REPO_VERSION})
+string(REGEX REPLACE "^(.......-.*)|(.......)$" "0.0.0" CMAKE_GIT_REPO_VERSION ${CMAKE_GIT_REPO_VERSION}) # fix if all we have is the git SHA
+
+
+# Uncomment the next line for an unomptimized build for debugging. Use in conjunction with the Debug build type.
+set(GIT_REPO_VERSION v0.7.7)
+set(CMAKE_GIT_REPO_VERSION 0.7.7)
 configure_file("headers/version.h.in" "headers/version.h")
 message("GIT_REPO_VERSION is ${GIT_REPO_VERSION}")
 message("CMAKE_GIT_REPO_VERSION is ${CMAKE_GIT_REPO_VERSION}")
-
-# Uncomment the next line for an unomptimized build for debugging. Use in conjunction with the Debug build type.
-set(GIT_REPO_VERSION v0.7.6)
-set(CMAKE_GIT_REPO_VERSION 0.7.6)
 
 project(GP2040-CE LANGUAGES C CXX ASM VERSION ${CMAKE_GIT_REPO_VERSION})
 set(CMAKE_C_STANDARD 11)

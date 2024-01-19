@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Copyright (c) 2021 Jason Skuby (mytechtoybox.com)
+ * SPDX-FileCopyrightText: Copyright (c) 2024 OpenStickCommunity (gp2040-ce.info)
  */
 
 #include "addons/i2cdisplay.h"
@@ -883,6 +883,17 @@ void I2CDisplayAddon::drawVewlix(int startX, int startY, int buttonRadius, int b
 {
 	const int buttonMargin = buttonPadding + (buttonRadius * 2);
 
+	// inner circle for turbo enabled
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_2) obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY + (buttonMargin * 0.2), buttonRadius - 3, buttonRadius - 3, 1, false);  //P1 B3
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_3) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P2 B4
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_5) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.75), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P3 R1
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_4) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.75), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //P4 L1
+
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_0) obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75) - (buttonMargin / 3), startY + buttonMargin + (buttonMargin * 0.2), buttonRadius - 3, buttonRadius - 3, 1, false);  //K1 B1
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_1) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75) - (buttonMargin / 3), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //K2 B2
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_7) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.75) - (buttonMargin / 3), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //K3 R2
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_6) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.75) - (buttonMargin / 3), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //K4 L2
+
 	// 8-button Vewlix
 	obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY + (buttonMargin * 0.2), buttonRadius, buttonRadius, 1, pGamepad->pressedB3());
 	obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75), startY - (buttonMargin / 4), buttonRadius, buttonRadius, 1, pGamepad->pressedB4());
@@ -916,6 +927,17 @@ void I2CDisplayAddon::drawVLXB(int startX, int startY, int buttonRadius, int but
 void I2CDisplayAddon::drawFightboard(int startX, int startY, int buttonRadius, int buttonPadding)
 {
 	const int buttonMargin = buttonPadding + (buttonRadius * 2);
+
+	// inner circle for turbo enabled
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_2) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.625), startY * 1.25, buttonRadius - 3, buttonRadius - 3, 1, false);  //P1 B3
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_3) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.625), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P2 B4
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_5) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.625), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P3 R1
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_4) obdPreciseEllipse(&obd, startX + (buttonMargin * 6.625), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //P4 L1
+
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_0) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.625), startY + buttonMargin * 1.25, buttonRadius - 3, buttonRadius - 3, 1, false);  //K1 B1
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_1) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.625), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //K2 B2
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_7) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.625), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //K3 R2
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_6) obdPreciseEllipse(&obd, startX + (buttonMargin * 6.625), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //K4 L2
 
 	obdPreciseEllipse(&obd, (startX + buttonMargin * 3.625), startY * 1.25, buttonRadius, buttonRadius, 1, pGamepad->pressedB3());
 	obdPreciseEllipse(&obd, (startX + buttonMargin * 4.625), startY - (buttonMargin / 4), buttonRadius, buttonRadius, 1, pGamepad->pressedB4());
@@ -971,6 +993,17 @@ void I2CDisplayAddon::drawNoir8(int startX, int startY, int buttonRadius, int bu
 {
 	const int buttonMargin = buttonPadding + (buttonRadius * 2);
 
+	// inner circle for turbo enabled
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_2) obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY + (buttonMargin / 3.5), buttonRadius - 3, buttonRadius - 3, 1, false);  //P1 B3
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_3) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P2 B4
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_5) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.75), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P3 R1
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_4) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.75), startY, buttonRadius - 3, buttonRadius - 3, 1, false); //P4 L1
+
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_0) obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY + buttonMargin + (buttonMargin / 3.5), buttonRadius - 3, buttonRadius - 3, 1, false);  //K1 B1
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_1) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //K2 B2
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_7) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.75), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //K3 R2
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_6) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.75), startY + buttonMargin, buttonRadius - 3, buttonRadius - 3, 1, false); //K4 L2
+
 	// 8-button Noir8
 	obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY + (buttonMargin / 3.5), buttonRadius, buttonRadius, 1, pGamepad->pressedB3());
 	obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75), startY - (buttonMargin / 4), buttonRadius, buttonRadius, 1, pGamepad->pressedB4());
@@ -1016,6 +1049,17 @@ void I2CDisplayAddon::drawCapcom6(int startX, int startY, int buttonRadius, int 
 void I2CDisplayAddon::drawSticklessButtons(int startX, int startY, int buttonRadius, int buttonPadding)
 {
 	const int buttonMargin = buttonPadding + (buttonRadius * 2);
+
+	// inner circle for turbo enabled
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_0) obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY + buttonMargin, buttonRadius - 3, buttonRadius - 3, 1, false);  //K1 
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_1) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //K2
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_2) obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY, buttonRadius - 3, buttonRadius - 3, 1, false);  //P1
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_3) obdPreciseEllipse(&obd, startX + (buttonMargin * 3.75), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P2
+
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_4) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.75), startY, buttonRadius - 3, buttonRadius - 3, 1, false); //P4
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_5) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.75), startY - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false);  //P3
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_6) obdPreciseEllipse(&obd, startX + (buttonMargin * 5.75), startY + buttonMargin, buttonRadius - 3, buttonRadius - 3, 1, false); //K4
+	if(gamepad->turboState.buttons & GAMEPAD_BUTTON_7) obdPreciseEllipse(&obd, startX + (buttonMargin * 4.75), startY + buttonMargin - (buttonMargin / 4), buttonRadius - 3, buttonRadius - 3, 1, false); //K3
 
 	// 8-button
 	obdPreciseEllipse(&obd, startX + (buttonMargin * 2.75), startY, buttonRadius, buttonRadius, 1, pGamepad->pressedB3());
@@ -1189,8 +1233,9 @@ void I2CDisplayAddon::drawStatusBar(Gamepad *gamepad)
 		break;
 	}
 
-	if (turboOptions.enabled && isValidPin(turboOptions.buttonPin))
-	{
+
+	if ( turboOptions.enabled ) {
+
 		statusBar += " T";
 		if (turboOptions.shotCount < 10) // padding
 			statusBar += "0";
