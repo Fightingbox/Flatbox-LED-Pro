@@ -34,6 +34,11 @@
 #define GPIO_PIN_03 GpioAction::BUTTON_PRESS_A2     // A2     | ~      | Capture | ~        | 14     | ~      |
 
 
+#define GPIO_PIN_20 GpioAction::RESERVED  // FOR OLED I2C PIN
+#define GPIO_PIN_21 GpioAction::RESERVED  // FOR OLED I2C PIN
+#define GPIO_PIN_22 GpioAction::RESERVED  // FOR USB PASSTHROUGH
+#define GPIO_PIN_23 GpioAction::RESERVED  // FOR USB PASSTHROUGH
+
 // Keyboard Mapping Configuration
 //                                            // GP2040 | Xinput | Switch  | PS3/4/5  | Dinput | Arcade |
 #define KEY_DPAD_UP     HID_KEY_ARROW_UP      // UP     | UP     | UP      | UP       | UP     | UP     |
@@ -56,13 +61,6 @@
 #define KEY_BUTTON_A2   HID_KEY_F2            // A2     | ~      | Capture | ~        | 14     | ~      |
 #define KEY_BUTTON_FN   -1                    // Hotkey Function                                        |
 
-// This is Hotkey section
-#define PIN_BUTTON_FN        -1                      // Hotkey Function
-// This is Reverse mode section
-#define PIN_BUTTON_REVERSE   -1                   // UDLR Reverse
-// This is Turbo mode section 
-#define PIN_BUTTON_TURBO     -1                     // Turbo
-
 // This is D-PAD mode section 
 #define JSLIDER_ENABLED 1
 #define PIN_SLIDER_ONE        13                // Left Stick Slider
@@ -83,12 +81,6 @@
 #define SLIDER_SOCD_SLOT_ONE SOCD_MODE_UP_PRIORITY
 #define SLIDER_SOCD_SLOT_TWO  SOCD_MODE_SECOND_INPUT_PRIORITY
 #define SLIDER_SOCD_SLOT_DEFAULT SOCD_MODE_NEUTRAL 
-
-
-
-#define DEFAULT_FORCED_SETUP_MODE FORCED_SETUP_MODE_OFF // 	FORCED_SETUP_MODE_OFF, FORCED_SETUP_MODE_LOCK_MODE_SWITCH, FORCED_SETUP_MODE_LOCK_WEB_CONFIG, FORCED_SETUP_MODE_LOCK_BOTH
-#define DEFAULT_LOCK_HOTKEYS false // or true
-#define DEFAULT_PS4CONTROLLER_TYPE PS4_CONTROLLER
 
 // This is the LEDs section.
 // The default `TURBO_LED_PIN` pin is set to `15` ( it is recommended to run through 3V3(OUT) with a resistor)
@@ -112,18 +104,16 @@
 // The default LEDS_[BUTTON] is an order and has nothing to do with what GPIO pin something is connected to.
 // Unless you are planning on running custom animations I would recommmend you leave this as is.
 
-#define TURBO_LED_PIN -1
-#define BOARD_LEDS_PIN 15
-#define REVERSE_LED_PIN -1
 
+#define BOARD_LEDS_PIN 15
 #define LED_BRIGHTNESS_MAXIMUM 150
 #define LED_BRIGHTNESS_STEPS 5
 #define LED_FORMAT LED_FORMAT_GRB
 #define LEDS_PER_PIXEL 1
 
-#define LEDS_DPAD_LEFT   0 // 11  
-#define LEDS_DPAD_DOWN   1//10
-#define LEDS_DPAD_RIGHT  2//9
+#define LEDS_DPAD_LEFT   0   
+#define LEDS_DPAD_DOWN   1
+#define LEDS_DPAD_RIGHT  2
 #define LEDS_DPAD_UP     11
 #define LEDS_BUTTON_B3   3
 #define LEDS_BUTTON_B4   4
@@ -139,39 +129,6 @@
 #define LEDS_BUTTON_R3   -1
 #define LEDS_BUTTON_A1   -1
 #define LEDS_BUTTON_A2   -1
-
-// This is the Player LED section.
-// In this section you can specify if Player LEDs will be active, and, if active, which pins will be used for them.
-// The defualt is `PLED_TYPE_NONE` which will turn the Player LEDs off.
-// The default pin for each Player LED is `-1` which disables it.
-// To enable a `PLED#_PIN`, replace the `-1` with the GPIO pin number that is desired.
-// There are three options for `PLED_TYPE` currently:
-// 1 - `PLED_TYPE_NONE` - This will disable the Player LEDs
-// 2 - `PLED_TYPE_PWM` - This will enable the Player LEDs ( it is recommended to run through 3V3(OUT) with a resistor)
-// 3 - `PLED_TYPE_RGB` - This will enable the Player LEDs as addressible RGB LEDs (please not that this has not been implemented yet)
-
-#define PLED_TYPE PLED_TYPE_NONE
-#define PLED1_PIN -1
-#define PLED2_PIN -1
-#define PLED3_PIN -1
-#define PLED4_PIN -1
-
-
-// This is the Analog section.
-// In this section you can specify if Analog is enabled, and, if endabled, which pins will be used for it.
-// The default for `ANALOG_ADC_VRX` and `ANALOG_ADC_VRY` is `-1` which disables them.
-// To enable a `ANALOG_ADC_VRX` and `ANALOG_ADC_VRY`, replace the `-1` with the GPIO pin numbers that are desired. 
-
-#define ANALOG_ADC_1_VRX -1
-#define ANALOG_ADC_1_VRY -1
-#define ANALOG_ADC_1_MODE DPAD_MODE_LEFT_ANALOG
-#define ANALOG_ADC_1_INVERT INVERT_NONE
-
-#define ANALOG_ADC_2_VRX -1
-#define ANALOG_ADC_2_VRY -1
-#define ANALOG_ADC_2_MODE DPAD_MODE_RIGHT_ANALOG
-#define ANALOG_ADC_2_INVERT INVERT_NONE
-
 
 // This is the I2C Display section (commonly known as the OLED display section).
 // In this section you can specify if a display as been enabled, which pins are assined to it, the block address and speed.
@@ -202,7 +159,7 @@
 // Special note - All of the splash screen images can be changed via `include/bitmaps.h`
 
 #define SPLASH_MODE SPLASH_MODE_STATIC
-#define SPLASH_DURATION 7500 // Duration in milliseconds
+#define SPLASH_DURATION 3000 // Duration in milliseconds
 
 
 // The default `BUTTON_LAYOUT` is `BUTTON_LAYOUT_STICK` which will show an arcade stick on the left hand side of the display.
@@ -231,37 +188,6 @@
 #define BUTTON_LAYOUT BUTTON_LAYOUT_STICKLESS
 #define BUTTON_LAYOUT_RIGHT BUTTON_LAYOUT_STICKLESSB
 
-#define REVERSE_UP_DEFAULT 1
-#define REVERSE_DOWN_DEFAULT 1
-#define REVERSE_LEFT_DEFAULT 1
-#define REVERSE_RIGHT_DEFAULT 1
-
-// Board LED Add-on Setting
-// BOARD_LED_OFF  - Turns the on-board LED off
-// MODE_INDICATOR - On-board LED blinks on various frequencies depending
-//                  on the current mode (config, normal, or no USB data)
-// INPUT_TEST     - Blinks whenever any input is made
-
-#define BOARD_LED_TYPE ON_BOARD_LED_MODE_OFF
-
-// Dual Directional Add-on Options
-
-#define PIN_DUAL_DIRECTIONAL_UP -1
-#define PIN_DUAL_DIRECTIONAL_DOWN -1
-#define PIN_DUAL_DIRECTIONAL_LEFT -1
-#define PIN_DUAL_DIRECTIONAL_RIGHT -1
-#define DUAL_DIRECTIONAL_STICK_MODE DPAD_MODE_DIGITAL
-#define DUAL_DIRECTIONAL_COMBINE_MODE DUAL_COMBINE_MODE_MIXED
-
-// BOOTSEL Button Add-on setting
-#define BOOTSEL_BUTTON_MASK 0 // 0 means none, get other mask from GamepadState.h
-
-// Extra Button Add-on setting
-#define EXTRA_BUTTON_MASK 0 // 0 means none, get other mask from GamepadState.h
-                            // For directions, use GAMEPAD_MASK_DU, GAMEPAD_MASK_DD, GAMEPAD_MASK_DL and GAMEPAD_MASK_DR
-#define EXTRA_BUTTON_PIN -1
-
-
 // Button Lock Add-on setting
 // In Focus on mode, the START, SELECT, CAPTURE, and HOME buttons are locked,  the OLED off state, all the LED off state
 #define FOCUS_MODE_ENABLED 1
@@ -274,30 +200,7 @@
 // USB Passthrough settings
 #define PSPASSTHROUGH_ENABLED 1
 #define PSPASSTHROUGH_PIN_DPLUS 22
-
-
-// Keyboard Mapping Configuration
-// List of HID keycodes can be located here: https://github.com/hathach/tinyusb/blob/3623ba1884ddff23e9b64766cb6dd032f1425846/src/class/hid/hid.h#L356
-// Even for the modifier keys, HID_KEY entries should be used as the implementation expects those and will convert as necessary.
-#define KEY_DPAD_UP     HID_KEY_ARROW_UP      // UP
-#define KEY_DPAD_DOWN   HID_KEY_ARROW_DOWN    // DOWN
-#define KEY_DPAD_RIGHT  HID_KEY_ARROW_RIGHT   // RIGHT
-#define KEY_DPAD_LEFT   HID_KEY_ARROW_LEFT    // LEFT
-#define KEY_BUTTON_B1   HID_KEY_SHIFT_LEFT    // B1 / A / B / Cross / 2 / K1
-#define KEY_BUTTON_B2   HID_KEY_Z             // B2 / B / A / Circle / 3 / K2
-#define KEY_BUTTON_R2   HID_KEY_X             // R2 / RT / ZR / R2 / 8 / K3
-#define KEY_BUTTON_L2   HID_KEY_V             // L2 / LT / ZL / L2 / 7 / K4
-#define KEY_BUTTON_B3   HID_KEY_CONTROL_LEFT  // B3 / X / Y / Square / 1 / P1
-#define KEY_BUTTON_B4   HID_KEY_ALT_LEFT      // B4 / Y / X / Triangle / 4 / P2
-#define KEY_BUTTON_R1   HID_KEY_SPACE         // R1 / RB / R / R1 / 6 / P3
-#define KEY_BUTTON_L1   HID_KEY_C             // L1 / LB / L / L1 / 5 / P4
-#define KEY_BUTTON_S1   HID_KEY_5             // S1 / Back / Minus / Select / 9 / Coin
-#define KEY_BUTTON_S2   HID_KEY_1             // S2 / Start / Plus / Start / 10 / Start
-#define KEY_BUTTON_L3   HID_KEY_EQUAL         // L3 / LS / LS / L3 / 11 / LS
-#define KEY_BUTTON_R3   HID_KEY_MINUS         // R3 / RS / RS / R3 / 12 / RS
-#define KEY_BUTTON_A1   HID_KEY_9             // A1 / Guide / Home / PS / 13 / ~
-#define KEY_BUTTON_A2   HID_KEY_F2            // A2 / ~ / Capture / ~ / 14 / ~
-
+#define XBONEPASSTHROUGH_ENABLED 1
 
 #define DEFAULT_SPLASH \
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, \
