@@ -13,6 +13,8 @@ flatbox-led-pro is a Low profile hitbox-layout fightstick which improved and ext
 |D-PAD/left stick/right stick/ mode | no | yes , can choose by a slider| yes , can choose by a slider|
 |SOCD mode (only three options)| noly choose by the Hotkeys | yes, can can choose by a slider|  yes, can can choose by a slider|
 |USB Passthrough| no  | yes | yes |
+|Function Pin  | no | no | yes |
+|Turbo Pin| no | no | yes
 
 
 ![Flatbox-LED](assets/flatbox-led.jpg)
