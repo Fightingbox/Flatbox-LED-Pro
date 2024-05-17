@@ -92,24 +92,25 @@
 #define SPLASH_MODE SPLASH_MODE_STATIC
 #define SPLASH_DURATION 2500
 
-#define LEDS_DPAD_LEFT   1 
-#define LEDS_DPAD_DOWN   2
-#define LEDS_DPAD_RIGHT  3
-#define LEDS_DPAD_UP     0
-#define LEDS_BUTTON_B3   4
-#define LEDS_BUTTON_B4   5
-#define LEDS_BUTTON_R1   6
-#define LEDS_BUTTON_L1   7
-#define LEDS_BUTTON_B1   8
+#define LEDS_DPAD_LEFT   0// 11  
+#define LEDS_DPAD_DOWN   1//10
+#define LEDS_DPAD_RIGHT  2//9
+#define LEDS_DPAD_UP     11
+#define LEDS_BUTTON_B3   3
+#define LEDS_BUTTON_B4   4
+#define LEDS_BUTTON_R1   5
+#define LEDS_BUTTON_L1   6
+#define LEDS_BUTTON_B1   10
 #define LEDS_BUTTON_B2   9
-#define LEDS_BUTTON_R2   10
-#define LEDS_BUTTON_L2   11
+#define LEDS_BUTTON_R2   8
+#define LEDS_BUTTON_L2   7
 #define LEDS_BUTTON_S1   -1
 #define LEDS_BUTTON_S2   -1
 #define LEDS_BUTTON_L3   -1
 #define LEDS_BUTTON_R3   -1
 #define LEDS_BUTTON_A1   -1
 #define LEDS_BUTTON_A2   -1
+
 
 // Keyboard Host enabled by default
 #define KEYBOARD_HOST_ENABLED 1
